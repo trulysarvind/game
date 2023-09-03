@@ -1,0 +1,207 @@
+/* === GLOBAL STYLES === */
+
+/* == GLOBAL STYLES FOR INDEX PAGE ONLY == */
+
+/* Initially hides main content and boot message on homepage only */
+.homepage .section, .homepage h2, .homepage .boot {
+    visibility: hidden;
+}
+
+/* == GLOBAL STYLES FOR ALL PAGES  == */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000; /* Dark background, like old monitors */
+    font-family: 'Courier New', Courier, monospace; /* Classic monospace font */
+    color: #0F0; /* Bright green, like old terminal text */
+}
+
+h2 {
+    text-align: center;
+    background-color: #000e06;
+    padding: 10px 0;
+    border-bottom: 3px solid #0F0;
+    font-size: 24px;
+}
+
+#home-btn {
+    font-size: 24px; /* Adjust the size */
+    color: #0F0;    /* Adjust the color */
+    text-decoration: none; /* Remove underline */
+}
+
+
+/* === MATRIX BACKGROUND STYLES === */
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensures the canvas is below other content */
+}
+
+
+/* === PROJECT LIST PAGE STYLES === */
+
+.project-list ul {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.project-list li {
+    flex: 1;
+    text-align: center;
+    padding: 15px 0;
+    border-right: 2px solid #333; /* Slightly less bright border for a subtle divider */
+    background-color: rgba(0, 255, 0, 0.1); /* Slight green background */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.project-list li:last-child {
+    border-right: none;
+}
+
+.project-list li:hover {
+    background-color: rgba(0, 255, 0, 0.2); /* Brighter green on hover */
+}
+
+/* === SCANLINE EFFECT === */
+
+@keyframes scanline {
+    0% { top: -50%; }
+    100% { top: 150%; }
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.05), rgba(0,0,0,0.05) 1px, transparent 1px, transparent 3px);
+    pointer-events: none; /* Allow clicks through the scanlines */
+    animation: scanline 4s infinite linear;
+}
+
+/* === HOMEPAGE SPECIFIC STYLES === */
+
+
+
+.homepage .section {
+    margin: 70px auto;  /* Centers the section horizontally */
+    padding: 15px;
+    border: 1px solid #0F0;
+    background-color: #000e06;
+    display: flex; /* Added to align the title and switch horizontally */
+    align-items: center; /* Vertically center the title and switch */
+    justify-content: space-between; /* Space out the title and switch */
+    width: 350px; /* Fixed width for the subsections */
+    text-align: center; /* Ensures content inside the section is centered */
+}
+
+/* === SWITCH STYLES FOR HOMEPAGE === */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #46703d; /* Dim color for "off" state */
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: rgba(165, 18, 18, 0.952); /* Dim green for "off" state */
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: rgba(30, 160, 12, 0.637); /* Bright green for "on" state */
+}
+
+input:checked + .slider:before {
+    background-color: #89f589; /* Bright white for the circle in "on" state */
+    transform: translateX(26px);
+}
+
+/* === FLICKER EFFECT STYLES === */
+@keyframes flickerAnimation {
+    0%   { opacity: 1; }
+    25%  { opacity: 0.5; }
+    50%  { opacity: 1; }
+    75%  { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.flicker-effect {
+    animation: flickerAnimation 1s 1; /* Adjust 3s to however long you want the flicker effect to last */
+}
+
+
+/* === END OF SWITCH STYLES === */
+
+
+/* === SYSTEM BOOTING STYLES === */
+
+* {
+    font-family: 'Changa', sans-serif;
+    font-size: 22px;
+}
+
+.boot {
+    color: rgb(22, 201, 31);
+    position: absolute;
+    bottom: 10px; /* Positioning from the bottom of the page */
+    left: 10px;   /* Positioning from the left of the page */
+}
+
+.boot span {
+    width: 1.5rem;
+    position: fixed;
+    height: 1rem;
+    margin-left: 1rem;
+    border-bottom: 0.5rem solid rgb(76, 199, 113);
+    animation: cursor 0.4s infinite;
+}
+
+@keyframes cursor {
+    from {
+        border-color: rgb(4, 87, 8);
+    }
+    to {
+        border-color: transparent;
+    }
+}
+
+/* === END OF SYSTEM BOOTING STYLES === */
+
+
+
